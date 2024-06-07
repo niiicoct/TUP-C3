@@ -1,0 +1,8 @@
+body {
+    background-color: #17171d;
+}
+
+#root {
+    margin: 0 auto;
+    max-width: 500px;
+}

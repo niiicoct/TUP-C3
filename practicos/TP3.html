@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
 
     <!-- Enlaces a React, ReactDOM y Babel -->
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <title>TP1</title>
     <style>
@@ -26,11 +26,13 @@
             border-radius: 5px;
             align-items: center;
         }
+
         h2 {
             font-size: 1.5rem;
+            font-weight: normal;
             color: #333;
             margin: 0;
-            padding: 0;
+            padding: 10px 0;
         }
 
         h2 span {
@@ -42,23 +44,40 @@
 
         .alumno {
             background-color: #fff;
-            padding: 5px;
+            padding: 10px 5px;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            width: 500px;
             margin: 10px auto;
+
+            h2 {
+                font-size: 32px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            span {
+                font-size: 20px;
+                padding-top: 15px;
+                text-align: center;
+                color: #999;
+            }
         }
 
         .ver {
             font-size: 1rem;
             color: #333;
             padding-left: 45px;
+            margin: 15px 5px;
+
+            a {
+                display: inline-block;
+                text-decoration: none;
+                font-size: 20px;
+            }
         }
 
-        .ver a {
-            display: inline-block;
-            text-decoration: none;
-        }
 
         .falta {
             color: red;
@@ -69,9 +88,353 @@
             font-size: 0.8rem;
             color: #999;
         }
+
+        table {
+            width: calc(100% - 10px);
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: sans-serif;
+            font-size: 20px;
+        }
+
+        caption {
+            caption-side: top;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        thead {
+            background-color: rgb(228 240 245);
+        }
+
+        th,
+        td {
+            padding: 8px 10px;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        td {
+            padding: 0 10px;
+            text-align: right;
+        }
     </style>
     <script>
         const datos = [
+  {
+    "id": "C3-03",
+    "comision": "C3",
+    "orden": 3,
+    "legajo": 58931,
+    "nombre": "Cabrera, Lucas Nahuel",
+    "inicial": "LNC",
+    "TP1": false,
+    "cambio": true,
+    "ubicacion": "./03 - 58931 - Cabrera, Lucas Nahuel",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-04",
+    "comision": "C3",
+    "orden": 4,
+    "legajo": 58771,
+    "nombre": "Calvo Maderuelo, Carlos M",
+    "inicial": "CMCM",
+    "TP1": false,
+    "cambio": true,
+    "ubicacion": "./04 - 58771 - Calvo Maderuelo, Carlos M",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-05",
+    "comision": "C3",
+    "orden": 5,
+    "legajo": 59022,
+    "nombre": "Camaño Terán, Nicolás",
+    "inicial": "NCT",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./05 - 59022 - Camaño Terán, Nicolás",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-06",
+    "comision": "C3",
+    "orden": 6,
+    "legajo": 58889,
+    "nombre": "Capó, Mauricio Nicolás",
+    "inicial": "MNC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./06 - 58889 - Capó, Mauricio Nicolás",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-07",
+    "comision": "C3",
+    "orden": 7,
+    "legajo": 58770,
+    "nombre": "Carabajal, Ariadna Micael",
+    "inicial": "AMC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./07 - 58770 - Carabajal, Ariadna Micael",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-08",
+    "comision": "C3",
+    "orden": 8,
+    "legajo": 59046,
+    "nombre": "Carrizo, Angel Nahuel",
+    "inicial": "ANC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./08 - 59046 - Carrizo, Angel Nahuel",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-10",
+    "comision": "C3",
+    "orden": 10,
+    "legajo": 58925,
+    "nombre": "Castillo, Martina",
+    "inicial": "MCA",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./10 - 58925 - Castillo, Martina",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-12",
+    "comision": "C3",
+    "orden": 12,
+    "legajo": 59016,
+    "nombre": "Catania, Franco Mauricio",
+    "inicial": "FMC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./12 - 59016 - Catania, Franco Mauricio",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-13",
+    "comision": "C3",
+    "orden": 13,
+    "legajo": 58813,
+    "nombre": "Cervera, Diego Octavio",
+    "inicial": "DOC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./13 - 58813 - Cervera, Diego Octavio",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-14",
+    "comision": "C3",
+    "orden": 14,
+    "legajo": 59379,
+    "nombre": "Charkiewicz, Carolina Est",
+    "inicial": "CEC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./14 - 59379 - Charkiewicz, Carolina Est",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-15",
+    "comision": "C3",
+    "orden": 15,
+    "legajo": 59027,
+    "nombre": "Chaves, Gonzalo Martín",
+    "inicial": "GMC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./15 - 59027 - Chaves, Gonzalo Martín",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-16",
+    "comision": "C3",
+    "orden": 16,
+    "legajo": 59347,
+    "nombre": "Chein, Amir Elias",
+    "inicial": "AEC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./16 - 59347 - Chein, Amir Elias",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-17",
+    "comision": "C3",
+    "orden": 17,
+    "legajo": 59315,
+    "nombre": "Chein, Santiago",
+    "inicial": "SCH",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./17 - 59315 - Chein, Santiago",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-18",
+    "comision": "C3",
+    "orden": 18,
+    "legajo": 58768,
+    "nombre": "Cordoba, Ignacio Leandro",
+    "inicial": "ILC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./18 - 58768 - Cordoba, Ignacio Leandro",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-19",
+    "comision": "C3",
+    "orden": 19,
+    "legajo": 58780,
+    "nombre": "Coronel, Juan Carlos",
+    "inicial": "JCC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./19 - 58780 - Coronel, Juan Carlos",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-20",
+    "comision": "C3",
+    "orden": 20,
+    "legajo": 58937,
+    "nombre": "Coronel, Lucas Francisco",
+    "inicial": "LFC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./20 - 58937 - Coronel, Lucas Francisco",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-21",
+    "comision": "C3",
+    "orden": 21,
+    "legajo": 59019,
+    "nombre": "Corral Garcia, Mario Maxi",
+    "inicial": "MMCG",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./21 - 59019 - Corral Garcia, Mario Maxi",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-22",
+    "comision": "C3",
+    "orden": 22,
+    "legajo": 58939,
+    "nombre": "Cruz, Francisco Sebastian",
+    "inicial": "FSC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./22 - 58939 - Cruz, Francisco Sebastian",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-23",
+    "comision": "C3",
+    "orden": 23,
+    "legajo": 59083,
+    "nombre": "Cuellar, José Omar",
+    "inicial": "JOC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./23 - 59083 - Cuellar, José Omar",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-24",
+    "comision": "C3",
+    "orden": 24,
+    "legajo": 59063,
+    "nombre": "Cuevas, Matias Sebastián",
+    "inicial": "MSC",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./24 - 59063 - Cuevas, Matias Sebastián",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-26",
+    "comision": "C3",
+    "orden": 26,
+    "legajo": 59075,
+    "nombre": "Delgado, Fabricio Tobias",
+    "inicial": "FTD",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./26 - 59075 - Delgado, Fabricio Tobias",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-27",
+    "comision": "C3",
+    "orden": 27,
+    "legajo": 59185,
+    "nombre": "Diaz Ghiggia, Guillermo",
+    "inicial": "GDG",
+    "TP1": false,
+    "cambio": true,
+    "ubicacion": "./27 - 59185 - Diaz Ghiggia, Guillermo",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-29",
+    "comision": "C3",
+    "orden": 29,
+    "legajo": 58844,
+    "nombre": "Diaz Gonzalez, Nahuel Ale",
+    "inicial": "NADG",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./29 - 58844 - Diaz Gonzalez, Nahuel Ale",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-32",
+    "comision": "C3",
+    "orden": 32,
+    "legajo": 58763,
+    "nombre": "Donelli, Luciano",
+    "inicial": "LDO",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./32 - 58763 - Donelli, Luciano",
+    "TP2": true,
+    "TP3": true
+  },
   {
     "id": "C3-34",
     "comision": "C3",
@@ -81,8 +444,151 @@
     "inicial": "GTF",
     "TP1": false,
     "cambio": true,
-    "ubicacion": "./34 - 55249 - Fernandez, Gonzalo Tomas/TP3/index.html",
+    "ubicacion": "./34 - 55249 - Fernandez, Gonzalo Tomas",
     "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-36",
+    "comision": "C3",
+    "orden": 36,
+    "legajo": 57565,
+    "nombre": "Heredia, Fabricio Nicolás",
+    "inicial": "FNH",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./36 - 57565 - Heredia, Fabricio Nicolás",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-38",
+    "comision": "C3",
+    "orden": 38,
+    "legajo": 59184,
+    "nombre": "Lucena, Matias Leandro",
+    "inicial": "MLL",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./38 - 59184 - Lucena, Matias Leandro",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-39",
+    "comision": "C3",
+    "orden": 39,
+    "legajo": 59438,
+    "nombre": "Martin, Leonardo Javier",
+    "inicial": "LJM",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./39 - 59438 - Martin, Leonardo Javier",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-40",
+    "comision": "C3",
+    "orden": 40,
+    "legajo": 59060,
+    "nombre": "Martinez, Maira",
+    "inicial": "MMA",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./40 - 59060 - Martinez, Maira",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-41",
+    "comision": "C3",
+    "orden": 41,
+    "legajo": 59550,
+    "nombre": "Osores Medina, Selena Pau",
+    "inicial": "SPOM",
+    "TP1": false,
+    "cambio": true,
+    "ubicacion": "./41 - 59550 - Osores Medina, Selena Pau",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-42",
+    "comision": "C3",
+    "orden": 42,
+    "legajo": 55883,
+    "nombre": "Pedraza, Leonardo Miguel",
+    "inicial": "LMP",
+    "TP1": false,
+    "cambio": true,
+    "ubicacion": "./42 - 55883 - Pedraza, Leonardo Miguel",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-44",
+    "comision": "C3",
+    "orden": 44,
+    "legajo": 59092,
+    "nombre": "Perez, Luciano Damian",
+    "inicial": "LDP",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./44 - 59092 - Perez, Luciano Damian",
+    "TP2": true,
+    "TP3": true
+  },
+  {
+    "id": "C3-47",
+    "comision": "C3",
+    "orden": 47,
+    "legajo": 58884,
+    "nombre": "Salazar, Agustina Ximena",
+    "inicial": "AXS",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./47 - 58884 - Salazar, Agustina Ximena",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-48",
+    "comision": "C3",
+    "orden": 48,
+    "legajo": 58881,
+    "nombre": "Sosa Juarez, Malena Lujan",
+    "inicial": "MLSJ",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./48 - 58881 - Sosa Juarez, Malena Lujan",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-49",
+    "comision": "C3",
+    "orden": 49,
+    "legajo": 58905,
+    "nombre": "Sueldo, Leandro Antonio",
+    "inicial": "LADS",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./49 - 58905 - Sueldo, Leandro Antonio",
+    "TP2": false,
+    "TP3": true
+  },
+  {
+    "id": "C3-50",
+    "comision": "C3",
+    "orden": 50,
+    "legajo": 50792,
+    "nombre": "Tula Nelegatti, Agustin",
+    "inicial": "AETN",
+    "TP1": true,
+    "cambio": true,
+    "ubicacion": "./50 - 50792 - Tula Nelegatti, Agustin",
+    "TP2": false,
     "TP3": true
   },
   {
@@ -94,7 +600,7 @@
     "inicial": "GAU",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./01 - 57605 - Auad, Gerónimo/TP3/index.html",
+    "ubicacion": "./01 - 57605 - Auad, Gerónimo",
     "TP2": false,
     "TP3": false
   },
@@ -107,86 +613,8 @@
     "inicial": "ACDA",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./02 - 59204 - Aybar, Anibal Cesar Daniel/TP3/index.html",
+    "ubicacion": "./02 - 59204 - Aybar, Anibal Cesar Daniel",
     "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-03",
-    "comision": "C3",
-    "orden": 3,
-    "legajo": 58931,
-    "nombre": "Cabrera, Lucas Nahuel",
-    "inicial": "LNC",
-    "TP1": false,
-    "cambio": false,
-    "ubicacion": "./03 - 58931 - Cabrera, Lucas Nahuel/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-04",
-    "comision": "C3",
-    "orden": 4,
-    "legajo": 58771,
-    "nombre": "Calvo Maderuelo, Carlos M",
-    "inicial": "CMCM",
-    "TP1": false,
-    "cambio": false,
-    "ubicacion": "./04 - 58771 - Calvo Maderuelo, Carlos M/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-05",
-    "comision": "C3",
-    "orden": 5,
-    "legajo": 59022,
-    "nombre": "Camaño Terán, Nicolás",
-    "inicial": "NCT",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./05 - 59022 - Camaño Terán, Nicolás/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-06",
-    "comision": "C3",
-    "orden": 6,
-    "legajo": 58889,
-    "nombre": "Capó, Mauricio Nicolás",
-    "inicial": "MNC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./06 - 58889 - Capó, Mauricio Nicolás/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-07",
-    "comision": "C3",
-    "orden": 7,
-    "legajo": 58770,
-    "nombre": "Carabajal, Ariadna Micael",
-    "inicial": "AMC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./07 - 58770 - Carabajal, Ariadna Micael/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-08",
-    "comision": "C3",
-    "orden": 8,
-    "legajo": 59046,
-    "nombre": "Carrizo, Angel Nahuel",
-    "inicial": "ANC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./08 - 59046 - Carrizo, Angel Nahuel/TP3/index.html",
-    "TP2": true,
     "TP3": false
   },
   {
@@ -198,21 +626,8 @@
     "inicial": "IAC",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./09 - 55839 - Castillo, Ignacio Agustín/TP3/index.html",
+    "ubicacion": "./09 - 55839 - Castillo, Ignacio Agustín",
     "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-10",
-    "comision": "C3",
-    "orden": 10,
-    "legajo": 58925,
-    "nombre": "Castillo, Martina",
-    "inicial": "MCA",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./10 - 58925 - Castillo, Martina/TP3/index.html",
-    "TP2": true,
     "TP3": false
   },
   {
@@ -224,177 +639,8 @@
     "inicial": "MBC",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./11 - 59181 - Castro, Maria Belén/TP3/index.html",
+    "ubicacion": "./11 - 59181 - Castro, Maria Belén",
     "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-12",
-    "comision": "C3",
-    "orden": 12,
-    "legajo": 59016,
-    "nombre": "Catania, Franco Mauricio",
-    "inicial": "FMC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./12 - 59016 - Catania, Franco Mauricio/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-13",
-    "comision": "C3",
-    "orden": 13,
-    "legajo": 58813,
-    "nombre": "Cervera, Diego Octavio",
-    "inicial": "DOC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./13 - 58813 - Cervera, Diego Octavio/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-14",
-    "comision": "C3",
-    "orden": 14,
-    "legajo": 59379,
-    "nombre": "Charkiewicz, Carolina Est",
-    "inicial": "CEC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./14 - 59379 - Charkiewicz, Carolina Est/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-15",
-    "comision": "C3",
-    "orden": 15,
-    "legajo": 59027,
-    "nombre": "Chaves, Gonzalo Martín",
-    "inicial": "GMC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./15 - 59027 - Chaves, Gonzalo Martín/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-16",
-    "comision": "C3",
-    "orden": 16,
-    "legajo": 59347,
-    "nombre": "Chein, Amir Elias",
-    "inicial": "AEC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./16 - 59347 - Chein, Amir Elias/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-17",
-    "comision": "C3",
-    "orden": 17,
-    "legajo": 59315,
-    "nombre": "Chein, Santiago",
-    "inicial": "SCH",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./17 - 59315 - Chein, Santiago/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-18",
-    "comision": "C3",
-    "orden": 18,
-    "legajo": 58768,
-    "nombre": "Cordoba, Ignacio Leandro",
-    "inicial": "ILC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./18 - 58768 - Cordoba, Ignacio Leandro/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-19",
-    "comision": "C3",
-    "orden": 19,
-    "legajo": 58780,
-    "nombre": "Coronel, Juan Carlos",
-    "inicial": "JCC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./19 - 58780 - Coronel, Juan Carlos/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-20",
-    "comision": "C3",
-    "orden": 20,
-    "legajo": 58937,
-    "nombre": "Coronel, Lucas Francisco",
-    "inicial": "LFC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./20 - 58937 - Coronel, Lucas Francisco/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-21",
-    "comision": "C3",
-    "orden": 21,
-    "legajo": 59019,
-    "nombre": "Corral Garcia, Mario Maxi",
-    "inicial": "MMCG",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./21 - 59019 - Corral Garcia, Mario Maxi/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-22",
-    "comision": "C3",
-    "orden": 22,
-    "legajo": 58939,
-    "nombre": "Cruz, Francisco Sebastian",
-    "inicial": "FSC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./22 - 58939 - Cruz, Francisco Sebastian/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-23",
-    "comision": "C3",
-    "orden": 23,
-    "legajo": 59083,
-    "nombre": "Cuellar, José Omar",
-    "inicial": "JOC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./23 - 59083 - Cuellar, José Omar/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-24",
-    "comision": "C3",
-    "orden": 24,
-    "legajo": 59063,
-    "nombre": "Cuevas, Matias Sebastián",
-    "inicial": "MSC",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./24 - 59063 - Cuevas, Matias Sebastián/TP3/index.html",
-    "TP2": true,
     "TP3": false
   },
   {
@@ -406,34 +652,8 @@
     "inicial": "LDE",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./25 - 57534 - Delani, Luca/TP3/index.html",
+    "ubicacion": "./25 - 57534 - Delani, Luca",
     "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-26",
-    "comision": "C3",
-    "orden": 26,
-    "legajo": 59075,
-    "nombre": "Delgado, Fabricio Tobias",
-    "inicial": "FTD",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./26 - 59075 - Delgado, Fabricio Tobias/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-27",
-    "comision": "C3",
-    "orden": 27,
-    "legajo": 59185,
-    "nombre": "Diaz Ghiggia, Guillermo",
-    "inicial": "GDG",
-    "TP1": false,
-    "cambio": false,
-    "ubicacion": "./27 - 59185 - Diaz Ghiggia, Guillermo/TP3/index.html",
-    "TP2": true,
     "TP3": false
   },
   {
@@ -445,20 +665,7 @@
     "inicial": "ADDG",
     "TP1": true,
     "cambio": false,
-    "ubicacion": "./28 - 58888 - Diaz Gómez, Andrés Dario/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-29",
-    "comision": "C3",
-    "orden": 29,
-    "legajo": 58844,
-    "nombre": "Diaz Gonzalez, Nahuel Ale",
-    "inicial": "NADG",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./29 - 58844 - Diaz Gonzalez, Nahuel Ale/TP3/index.html",
+    "ubicacion": "./28 - 58888 - Diaz Gómez, Andrés Dario",
     "TP2": true,
     "TP3": false
   },
@@ -471,7 +678,7 @@
     "inicial": "VLD",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./30 - 58956 - Diaz, Viviana Lorena/TP3/index.html",
+    "ubicacion": "./30 - 58956 - Diaz, Viviana Lorena",
     "TP2": false,
     "TP3": false
   },
@@ -484,21 +691,8 @@
     "inicial": "LDDV",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./31 - 58747 - Diez Del Valle, Lucciano/TP3/index.html",
+    "ubicacion": "./31 - 58747 - Diez Del Valle, Lucciano",
     "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-32",
-    "comision": "C3",
-    "orden": 32,
-    "legajo": 58763,
-    "nombre": "Donelli, Luciano",
-    "inicial": "LDO",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./32 - 58763 - Donelli, Luciano/TP3/index.html",
-    "TP2": true,
     "TP3": false
   },
   {
@@ -510,7 +704,7 @@
     "inicial": "LEC",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./33 - 55847 - Elizondo Carreras, Lautaro/TP3/index.html",
+    "ubicacion": "./33 - 55847 - Elizondo Carreras, Lautaro",
     "TP2": false,
     "TP3": false
   },
@@ -523,86 +717,8 @@
     "inicial": "IFE",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./35 - 59183 - Fernandez, Ignacio/TP3/index.html",
+    "ubicacion": "./35 - 59183 - Fernandez, Ignacio",
     "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-36",
-    "comision": "C3",
-    "orden": 36,
-    "legajo": 57565,
-    "nombre": "Heredia, Fabricio Nicolás",
-    "inicial": "FNH",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./36 - 57565 - Heredia, Fabricio Nicolás/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-38",
-    "comision": "C3",
-    "orden": 38,
-    "legajo": 59184,
-    "nombre": "Lucena, Matias Leandro",
-    "inicial": "MLL",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./38 - 59184 - Lucena, Matias Leandro/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-39",
-    "comision": "C3",
-    "orden": 39,
-    "legajo": 59438,
-    "nombre": "Martin, Leonardo Javier",
-    "inicial": "LJM",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./39 - 59438 - Martin, Leonardo Javier/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-40",
-    "comision": "C3",
-    "orden": 40,
-    "legajo": 59060,
-    "nombre": "Martinez, Maira",
-    "inicial": "MMA",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./40 - 59060 - Martinez, Maira/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-41",
-    "comision": "C3",
-    "orden": 41,
-    "legajo": 59550,
-    "nombre": "Osores Medina, Selena Pau",
-    "inicial": "SPOM",
-    "TP1": false,
-    "cambio": false,
-    "ubicacion": "./41 - 59550 - Osores Medina, Selena Pau/TP3/index.html",
-    "TP2": true,
-    "TP3": false
-  },
-  {
-    "id": "C3-42",
-    "comision": "C3",
-    "orden": 42,
-    "legajo": 55883,
-    "nombre": "Pedraza, Leonardo Miguel",
-    "inicial": "LMP",
-    "TP1": false,
-    "cambio": false,
-    "ubicacion": "./42 - 55883 - Pedraza, Leonardo Miguel/TP3/index.html",
-    "TP2": true,
     "TP3": false
   },
   {
@@ -614,21 +730,8 @@
     "inicial": "ANP",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./43 - 59197 - Peralta, Antonio Nicolás/TP3/index.html",
+    "ubicacion": "./43 - 59197 - Peralta, Antonio Nicolás",
     "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-44",
-    "comision": "C3",
-    "orden": 44,
-    "legajo": 59092,
-    "nombre": "Perez, Luciano Damian",
-    "inicial": "LDP",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./44 - 59092 - Perez, Luciano Damian/TP3/index.html",
-    "TP2": true,
     "TP3": false
   },
   {
@@ -640,59 +743,7 @@
     "inicial": "AFR",
     "TP1": false,
     "cambio": false,
-    "ubicacion": "./46 - 59037 - Rodriguez, Antonella Fern/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-47",
-    "comision": "C3",
-    "orden": 47,
-    "legajo": 58884,
-    "nombre": "Salazar, Agustina Ximena",
-    "inicial": "AXS",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./47 - 58884 - Salazar, Agustina Ximena/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-48",
-    "comision": "C3",
-    "orden": 48,
-    "legajo": 58881,
-    "nombre": "Sosa Juarez, Malena Lujan",
-    "inicial": "MLSJ",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./48 - 58881 - Sosa Juarez, Malena Lujan/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-49",
-    "comision": "C3",
-    "orden": 49,
-    "legajo": 58905,
-    "nombre": "Sueldo, Leandro Antonio",
-    "inicial": "LADS",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./49 - 58905 - Sueldo, Leandro Antonio/TP3/index.html",
-    "TP2": false,
-    "TP3": false
-  },
-  {
-    "id": "C3-50",
-    "comision": "C3",
-    "orden": 50,
-    "legajo": 50792,
-    "nombre": "Tula Nelegatti, Agustin",
-    "inicial": "AETN",
-    "TP1": true,
-    "cambio": false,
-    "ubicacion": "./50 - 50792 - Tula Nelegatti, Agustin/TP3/index.html",
+    "ubicacion": "./46 - 59037 - Rodriguez, Antonella Fern",
     "TP2": false,
     "TP3": false
   }
@@ -700,36 +751,70 @@
     </script>
 
     <script type="text/babel">
-
+        const { createRoot } = ReactDOM
         const comision = datos[0].comision
+        const practicos = ['TP1', 'TP2', 'TP3']
 
-        const Ver = ({ alumno }) =>
-            <span className="ver">
-                {alumno.cambio ? 
-                    <a href={alumno.ubicacion}>Ver Entrega</a> : 
-                    <span class="falta">No entregado</span>}
-                {alumno.copia && <span className="copia">😲 {alumno.copia}</span>}
-            </span>
-        
-        const Alumno = ({ alumno }) => (
-            <div className="alumno">
-                <h2><span>{alumno.orden}</span> {alumno.nombre}</h2>
-                <Ver alumno={alumno} />
+        function contarEntrega(practico) {
+            const si = datos.filter(alumno => alumno[practico]).length
+            const no = datos.filter(alumno => !alumno[practico]).length
+
+            return { si, no }
+        }
+
+        function ubicar(origen, practico) {
+            return `${origen}/${practico}/index.html`
+        }
+
+        const Ver = ({ alumno, entrega }) =>
+            <div className="ver">
+                {alumno[entrega] ?
+                    <a href={ubicar(alumno.ubicacion, entrega)}>Ver {entrega}</a> :
+                    <span class="falta">{entrega} ❌</span>}
             </div>
-        )
 
+        const Alumno = ({ alumno }) => {
+            const [apellido, nombre] = alumno.nombre.split(', ')
+            return (
+                <div className="alumno">
+                    <h2><span>{alumno.orden}</span> <b>{apellido}</b>, <i>{nombre}</i></h2>
+                    {practicos.map(practico => <Ver alumno={alumno} entrega={practico} />)}
+                </div>
+            )
+        }
+
+        const Estadistica = () => {
+            return (
+                <div className="alumno">
+                    <table>
+                        <thead>
+                            <th>Prácticos</th>
+                            {practicos.map(practico => <th>{practico}</th>)}
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Entregó</th>
+                                {practicos.map(practico => <td>{contarEntrega(practico).si}</td>)}
+                            </tr>
+                            <tr>
+                                <th>Falta</th>
+                                {practicos.map(practico => <td>{contarEntrega(practico).no}</td>)}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
         const App = () => (
             <div id="main">
                 <h1>| {comision} | Listado de alumnos</h1>
-                <div>
-                    <div>Entregó: {datos.filter(alumno => alumno.cambio).length}</div>
-                    <div>Falta entregar: {datos.filter(alumno => !alumno.cambio).length}</div>
-                </div>
+                <Estadistica />
                 {datos.map(alumno => <Alumno key={alumno.id} alumno={alumno} />)}
             </div>
         )
 
-        ReactDOM.render(<App />, document.getElementById('root'))
+        const root = createRoot(document.getElementById('root'))
+        root.render(<App />);
     </script>
 </head>
 
